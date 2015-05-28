@@ -1,5 +1,6 @@
 import unittest
 from Cards import Card
+from Hand import Hand
 
 class TestHand(unittest.TestCase):
     def getTestCards(self):
@@ -8,9 +9,8 @@ class TestHand(unittest.TestCase):
         return [aos, koh]
 
     def testGetCardValues(self):
-        self.getTestCards()
-
-        self.assertEqual(
+        hand = Hand(self.getTestCards())
+        self.assertEqual(hand.getCardValues(), [11, 21])
 
 if __name__ == '__main__':
     unittest.main()

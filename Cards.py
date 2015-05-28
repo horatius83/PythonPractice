@@ -1,4 +1,4 @@
-from itertools import repeat, product
+from itertools import repeat
 
 suits = set(['diamonds', 'hearts', 'clubs', 'spades'])
 ranks = [str(i) for i in range(2,10)] + ['jack', 'queen', 'king', 'ace']
@@ -17,16 +17,7 @@ class Card:
         return self._rank
     def getSuit(self):
         return self._suit
-    def toString(self):
+    def __str__(self):
         return '{0} of {1}'.format(self._rank, self._suit)
     def getValues(self):
         return values[self._rank]
-
-class Hand:
-    def __init__(self, cards):
-        self._cards = [x for x in cards]
-    def getCards(self):
-        return self._cards
-    def getCardValues(self):
-        return [sum(x) for x in product(*(x.getValues() for x in self._cards))]
-
